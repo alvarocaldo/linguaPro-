@@ -1,0 +1,23 @@
+<section id="docentes" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Nuestros Docentes</h2>
+    <div class="row">
+      @for (docente of catalogoService.docentes(); track docente.id) {
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm border-0 text-center">
+            <img [src]="docente.foto" class="card-img-top rounded-circle w-50 mx-auto mt-4" alt="{{ docente.nombre }}">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">{{ docente.nombre }}</h5>
+              <p class="text-muted mb-1">{{ docente.especialidad }}</p>
+              <div class="mb-2">
+                @for (idioma of docente.idiomas; track idioma) {
+                  <span class="badge bg-primary me-1">{{ idioma }}</span>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

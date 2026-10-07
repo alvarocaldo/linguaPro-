@@ -1,0 +1,59 @@
+<section id="formulario" class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow border-0">
+          <div class="card-header bg-primary text-white text-center"><h3 class="mb-0">Inscríbete a un Curso</h3></div>
+          <div class="card-body p-4">
+            @if (mostrarAlerta()) {
+              <div class="alert alert-{{ tipoAlerta() }} alert-dismissible fade show" role="alert">
+                {{ mensajeAlerta() }}
+                <button type="button" class="btn-close" (click)="mostrarAlerta.set(false)"></button>
+              </div>
+            }
+            <form (ngSubmit)="enviarFormulario()">
+              <div class="mb-3">
+                <label class="form-label">Nombre Completo *</label>
+                <input type="text" class="form-control" [ngModel]="nombre()" (ngModelChange)="nombre.set($event)" name="nombre" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Correo Electrónico *</label>
+                <input type="email" class="form-control" [ngModel]="email()" (ngModelChange)="email.set($event)" name="email" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Idioma de interés *</label>
+                <select class="form-select" [ngModel]="idioma()" (ngModelChange)="idioma.set($event)" name="idioma" required>
+                  <option value="">Seleccione un idioma</option>
+                  <option value="Inglés">Inglés</option>
+                  <option value="Francés">Francés</option>
+                  <option value="Alemán">Alemán</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Modalidad</label>
+                <select class="form-select" [ngModel]="modalidad()" (ngModelChange)="modalidad.set($event)" name="modalidad">
+                  <option value="Presencial">Presencial</option>
+                  <option value="Virtual">Virtual</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Registrar Inscripción</button>
+            </form>
+          </div>
+        </div>
+        @if (inscripcionService.inscripciones().length > 0) {
+          <div class="mt-4">
+            <h5>Inscripciones recientes:</h5>
+            <ul class="list-group">
+              @for (insc of inscripcionService.inscripciones(); track insc.id) {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  {{ insc.nombre }} - {{ insc.idioma }} ({{ insc.modalidad }})
+                  <span class="badge bg-success rounded-pill">Registrado</span>
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

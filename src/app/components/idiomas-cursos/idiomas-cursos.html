@@ -1,0 +1,19 @@
+<section id="idiomas" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">Idiomas y Cursos</h2>
+    <div class="row">
+      @for (idioma of catalogoService.idiomas(); track idioma.id) {
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm border-0 text-center p-3">
+            <i class="bi {{ idioma.icono }} display-4 text-primary"></i>
+            <div class="card-body">
+              <h5 class="card-title fw-bold">{{ idioma.nombre }}</h5>
+              <p class="card-text text-muted">{{ idioma.descripcion }}</p>
+              <button class="btn btn-outline-primary">Ver cursos</button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+<section id="resenas" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Lo que dicen nuestros estudiantes</h2>
+    <div class="row">
+      @for (resena of catalogoService.resenas(); track resena.id) {
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm border-0 h-100">
+            <div class="card-body">
+              <div class="text-warning mb-2">
+                @for (star of [1,2,3,4,5]; track star) {
+                  <i class="bi" [class.bi-star-fill]="star <= resena.puntuacion" [class.bi-star]="star > resena.puntuacion"></i>
+                }
+              </div>
+              <p class="card-text fst-italic">"{{ resena.comentario }}"</p>
+              <footer class="blockquote-footer mt-2">{{ resena.estudiante }} - <cite title="Curso">{{ resena.curso }}</cite></footer>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

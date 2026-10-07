@@ -1,0 +1,19 @@
+<section id="promociones" class="py-5 bg-primary text-white">
+  <div class="container">
+    <h2 class="text-center mb-4">Promociones Vigentes</h2>
+    <div class="row">
+      @for (promo of catalogoService.promociones(); track promo.id) {
+        <div class="col-md-6 mb-4">
+          <div class="card bg-light text-dark shadow border-0 h-100">
+            <div class="card-body text-center">
+              <h4 class="card-title fw-bold text-primary">{{ promo.titulo }}</h4>
+              <p class="card-text">{{ promo.descripcion }}</p>
+              <h3 class="text-danger fw-bold">{{ promo.descuento }}</h3>
+              <p class="small text-muted">Válido hasta: {{ promo.validoHasta }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

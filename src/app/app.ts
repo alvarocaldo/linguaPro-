@@ -1,12 +1,32 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { NavbarComponent } from './components/navbar/navbar';
+import { HeroComponent } from './components/hero/hero';
+import { NosotrosComponent } from './components/nosotros/nosotros';
+import { IdiomasCursosComponent } from './components/idiomas-cursos/idiomas-cursos';
+import { DocentesComponent } from './components/docentes/docentes';
+import { PromocionesComponent } from './components/promociones/promociones';
+import { ResenasComponent } from './components/resenas/resenas';
+import { FormularioComponent } from './components/formulario/formulario';
+import { FooterComponent } from './components/footer/footer';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
+  standalone: true,
+  imports: [
+    NavbarComponent,
+    HeroComponent,
+    NosotrosComponent,
+    IdiomasCursosComponent,
+    DocentesComponent,
+    PromocionesComponent,
+    ResenasComponent,
+    FormularioComponent,
+    FooterComponent
+  ],
   templateUrl: './app.html',
+  styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('linguapro');
+  title = 'linguapro';
 }
+
